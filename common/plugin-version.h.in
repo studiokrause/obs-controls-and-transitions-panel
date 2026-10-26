@@ -1,0 +1,4 @@
+#pragma once
+
+#define PLUGIN_NAME "@PLUGIN_NAME@"
+#define PLUGIN_VERSION "@PLUGIN_VERSION@"
