@@ -6,9 +6,16 @@ zadokować jako wąski pasek (np. pod podglądem).
 
 | Wtyczka | Dok (menu *Doki*) | Zawartość |
 |---|---|---|
-| `horizontal-controls` | **Sterowanie (poziomo)** | Rozpocznij transmisję, Transmisja (YouTube), Nagrywanie + pauza, Bufor powtórek + zapis, Wirtualna kamera + konfiguracja, Tryb studyjny, Ustawienia |
-| `horizontal-scene-transitions` | **Przejścia scen (poziomo)** | Lista przejść, dodaj / usuń / właściwości, czas trwania |
-| `horizontal-studio-transitions` | **Przejścia - tryb studyjny (poziomo)** | Przycisk *Przejście*, menu opcji, szybkie przejścia (z menu), dodaj szybkie przejście, T-bar |
+| `horizontal-controls` | **Sterowanie (H)** | Rozpocznij transmisję, Transmisja (YouTube), Nagrywanie + pauza, Bufor powtórek + zapis, Wirtualna kamera + konfiguracja, Tryb studyjny, Ustawienia |
+| `horizontal-scene-transitions` | **Przejścia scen (H)** | Lista przejść, dodaj / usuń / właściwości, czas trwania |
+| `horizontal-studio-transitions` | **Przejścia - tryb studyjny (H)** | Przycisk *Przejście*, menu opcji, szybkie przejścia (z menu), dodaj szybkie przejście, T-bar |
+
+Kolory przycisków (stan wyłączony / włączony):
+
+- *Rozpocznij transmisję*, *Rozpocznij nagrywanie* — ciemnoczerwony / czerwony
+- *Uruchom wirtualną kamerę* — ciemnozielony / zielony
+- *Tryb studyjny* — ciemnoniebieski / niebieski
+- *Przejście* (tryb studyjny) — niebieski
 
 Każdą wtyczkę instaluje się osobno — można użyć jednej, dwóch albo wszystkich.
 
@@ -68,7 +75,7 @@ cmake --build build --config RelWithDebInfo
 cmake --install build --config RelWithDebInfo --prefix dist
 ```
 
-Release 1.0.1 zbudowano z nagłówkami OBS 31.1.0 i Qt 6.8 (`obs-deps` 2025-05-23).
+Release 1.0.1+ zbudowano z nagłówkami OBS 31.1.0 i Qt 6.8 (`obs-deps` 2025-05-23).
 Zbudowane ze starszymi nagłówkami działają też w nowszym OBS (libobs i Qt 6
 zachowują zgodność binarną wstecz) — nie odwrotnie.
 

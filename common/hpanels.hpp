@@ -21,6 +21,7 @@
 
 #include <QAbstractButton>
 #include <QBoxLayout>
+#include <QColor>
 #include <QDockWidget>
 #include <QFrame>
 #include <QKeyEvent>
@@ -122,6 +123,15 @@ public:
 		hide();
 	}
 
+	/* Fixed colors instead of the theme's: one while the output / mode is
+	 * off, the other while it is on (state-active class or checked) */
+	void SetColors(const QColor &off, const QColor &on)
+	{
+		offColor = off;
+		onColor = on;
+		UpdateColors();
+	}
+
 	void SetTarget(QAbstractButton *t)
 	{
 		if (target == t)
@@ -145,6 +155,7 @@ public:
 				fallbackSync(this);
 			else
 				hide();
+			UpdateColors();
 			return;
 		}
 
@@ -187,6 +198,8 @@ public:
 		 * visible when the user closes the stock dock */
 		if (isHidden() != t->isHidden())
 			setVisible(!t->isHidden());
+
+		UpdateColors();
 	}
 
 protected:
@@ -238,7 +251,25 @@ private:
 		QTimer::singleShot(0, this, [this]() { Sync(); });
 	}
 
+	void UpdateColors()
+	{
+		if (!offColor.isValid())
+			return;
+
+		bool on = isChecked() || HasClass(this, "state-active");
+		QColor base = on ? onColor : offColor;
+		QString sheet = QStringLiteral("QPushButton { background-color: %1; border-color: %1; color: white; }"
+					       "QPushButton:hover { background-color: %2; border-color: %2; }"
+					       "QPushButton:pressed { background-color: %3; border-color: %3; }"
+					       "QPushButton:disabled { background-color: %4; border-color: %4; color: #a0a0a0; }")
+					.arg(base.name(), base.lighter(125).name(), base.darker(130).name(),
+					     base.darker(170).name());
+		if (styleSheet() != sheet)
+			setStyleSheet(sheet);
+	}
+
 	QPointer<QAbstractButton> target;
+	QColor offColor, onColor;
 	Width widthMode;
 	bool split = false;
 };

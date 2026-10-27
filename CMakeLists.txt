@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22...3.31)
 
 # One version for the whole suite; tags are v<version>.
-project(obs-horizontal-panels VERSION 1.0.1 LANGUAGES C CXX)
+project(obs-horizontal-panels VERSION 1.0.2 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

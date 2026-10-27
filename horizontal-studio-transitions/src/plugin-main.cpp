@@ -80,6 +80,8 @@ public:
 		/* The panel itself */
 		transitionButton = new MirrorButton(this, MirrorButton::Width::Text);
 		transitionButton->setObjectName("hstm_transitionButton");
+		const QColor blue(0x1e, 0x6f, 0xd9);
+		transitionButton->SetColors(blue, blue);
 		transitionButton->fallbackClick = []() { obs_frontend_preview_program_trigger_transition(); };
 		transitionButton->fallbackSync = [](MirrorButton *b) {
 			b->setText(ObsText("Transition"));

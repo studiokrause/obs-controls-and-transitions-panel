@@ -72,6 +72,13 @@ public:
 		MirrorButton *studio = add("modeSwitch", MirrorButton::Width::Text);
 		MirrorButton *settings = add("settingsButton", MirrorButton::Width::Text);
 
+		/* Off / on colors */
+		const QColor darkRed(0x6e, 0x12, 0x12), red(0xd3, 0x2f, 0x2f);
+		stream->SetColors(darkRed, red);
+		record->SetColors(darkRed, red);
+		vcam->SetColors(QColor(0x1b, 0x50, 0x20), QColor(0x2e, 0x9e, 0x3a));
+		studio->SetColors(QColor(0x15, 0x32, 0x66), QColor(0x1e, 0x6f, 0xd9));
+
 		/* Fallbacks through the public API, used only if OBS ever stops
 		 * providing the stock buttons */
 		stream->fallbackClick = []() {
